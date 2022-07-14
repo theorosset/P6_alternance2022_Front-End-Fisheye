@@ -1,7 +1,7 @@
-export async function fetchPhotographers(id) {
-  let data = "../../data/photographers.json";
-  if (!id) {
-    return fetch(data)
+export async function fetchPhotographers(idPhotographer) {
+  let dataJson = "../../data/photographers.json";
+  if (!idPhotographer) {
+    return fetch(dataJson)
       .then((res) => {
         return res.json();
       })
@@ -9,11 +9,15 @@ export async function fetchPhotographers(id) {
         return err;
       });
   } else {
-    return fetch(data)
+    return fetch(dataJson)
       .then((res) => {
         return res.json();
       })
-      .then((data) => console.log(data))
+      .then((data) => {
+        return data.photographers.find(({ id }) => {
+          return id === parseInt(idPhotographer);
+        });
+      })
       .catch((err) => {
         return err;
       });
