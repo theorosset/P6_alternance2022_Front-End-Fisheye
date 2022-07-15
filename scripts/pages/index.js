@@ -10,7 +10,7 @@ async function displayData(photographers) {
   });
 }
 
-function redirectToPagePhotographer(photographers) {
+function redirectToPagePhotographer() {
   const articles = document.querySelectorAll("article");
   articles.forEach((article) => {
     article.addEventListener("click", (e) => {

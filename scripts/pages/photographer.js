@@ -1,4 +1,9 @@
 import { fetchPhotographers } from "../utils/utils.js";
+
+/**
+ * recovery parameter of url
+ * @returns {id}
+ */
 function getUrlParams() {
   let url = window.location.search;
   let params = new URLSearchParams(url);
@@ -6,9 +11,28 @@ function getUrlParams() {
   return id;
 }
 
+//insert element with model in dom
+function insertInDom(photographer) {
+  const photographerModel = photographerFactory(photographer);
+  const userCardDOM = photographerModel.getUserCardDOM();
+  const photographeHeader = document.querySelector(".photograph-header");
+  const btnContact = document.querySelector(".contact_button");
+
+  photographeHeader.insertBefore(userCardDOM, btnContact);
+}
+
+function setAndRemovePositionInDom() {
+  const btnContact = document.querySelector(".contact_button");
+  const img = document.querySelector(".photograph-header article img");
+  btnContact.insertAdjacentElement("afterend", img);
+  const price = document.querySelector(".pricePhotographer");
+  price.style.display = "none";
+}
+
 async function main() {
   const idPhotographer = getUrlParams();
-  const photographers = await fetchPhotographers(idPhotographer);
-  console.log(photographers);
+  const photographer = await fetchPhotographers(idPhotographer);
+  insertInDom(photographer);
+  setAndRemovePositionInDom();
 }
 main();
