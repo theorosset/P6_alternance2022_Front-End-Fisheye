@@ -1,4 +1,5 @@
-import { fetchPhotographers } from "../utils/utils.js";
+import { fetchPhotographerById} from "../service/service.js";
+import { fetchMediaPhotographerById} from "../service/service.js";
 
 /**
  * recovery parameter of url
@@ -31,7 +32,9 @@ function setAndRemovePositionInDom() {
 
 async function main() {
   const idPhotographer = getUrlParams();
-  const photographer = await fetchPhotographers(idPhotographer);
+  const photographer = await fetchPhotographerById(idPhotographer);
+  const media = await fetchMediaPhotographerById(idPhotographer)
+  
   insertInDom(photographer);
   setAndRemovePositionInDom();
 }

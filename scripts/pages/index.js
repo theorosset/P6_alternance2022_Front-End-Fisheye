@@ -1,4 +1,4 @@
-import { fetchPhotographers } from "../utils/utils.js";
+import { fetchPhotographers } from "../service/service.js";
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");

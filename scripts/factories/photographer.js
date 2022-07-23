@@ -31,5 +31,31 @@ function photographerFactory(data) {
     article.appendChild(pricePhotographer);
     return article;
   }
-  return { name, picture, getUserCardDOM };
+
+
+  return { name, picture, getUserCardDOM};
+}
+
+function mediaFactory(data){
+
+    const {title, image, like, video} = data
+  function getMediaDom(){
+    const div = document.querySelector(".photograph-section-media");
+    //create element
+    const img = document.createElement('img')
+    const source = document.createElement('source')
+    const videoDom = document.createElement('video')
+
+   //set attribute or class
+   
+    img.setAttribute("src", image);
+    img.setAttribute("alt", image);
+    img.classList.add("photographer-media")
+
+    div.appendChild(img)
+    div.appendChild(source)
+    
+
+  }
+  return {getMediaDom};
 }
