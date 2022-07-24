@@ -62,15 +62,27 @@
 
 .photograph-section-media{
   margin-top: 40px;
+  max-width: 989px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .photographer-media{
-  width: 250px;
-  height: 250px;
+  width: 280px;
+  height: 280px;
   object-fit: cover;
   border-radius: 5px;
 }
-
+.media p {
+  margin-top: 0px;
+  color: #901c1c;
+  display: flex;
+  justify-content: space-between;
+}
+span .fas{
+  margin-left: 5px;
+}
 .modal {
   border-radius: 5px;
   background-color: #db8876;

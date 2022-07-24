@@ -32,7 +32,6 @@ export async function fetchMediaPhotographerById(id){
       })
       .then((data) => {
          data.media.forEach((media)=> { 
-          console.log(media.photographerId);
           if(media.photographerId === parseInt(id)){
             mediaFactory(media).getMediaDom()
           }
