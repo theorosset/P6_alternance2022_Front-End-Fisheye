@@ -4,6 +4,7 @@ async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
+    //eslint-disable-next-line
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
@@ -13,7 +14,7 @@ async function displayData(photographers) {
 function redirectToPagePhotographer() {
   const articles = document.querySelectorAll("article");
   articles.forEach((article) => {
-    article.addEventListener("click", (e) => {
+    article.addEventListener("click", () => {
       const articleClosest = article.closest("article");
       const articleId = articleClosest.dataset.id;
       document.location.href = `photographer.html?id=${articleId}`;
