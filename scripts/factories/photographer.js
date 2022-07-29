@@ -1,3 +1,4 @@
+/* eslint-disable */
 function photographerFactory(data) {
   const { name, portrait, tagline, price, city, country, id } = data;
 
@@ -32,56 +33,50 @@ function photographerFactory(data) {
     return article;
   }
 
-
-  return { name, picture, getUserCardDOM};
+  return { name, picture, getUserCardDOM };
 }
 
-function mediaFactory(data){
-
-    const {title, image, likes, video} = data
-  function getMediaDom(){
+function mediaFactory(data) {
+  const { title, image, likes, video } = data;
+  function getMediaDom() {
     const divParent = document.querySelector(".photograph-section-media");
-     
+
     //create element
     const divChild = document.createElement("div");
-    const img = document.createElement('img')
-    const source = document.createElement('source')
-    const videoDom = document.createElement('video')
-    const p = document.createElement("p")
-    const span = document.createElement("span")
-    const i = document.createElement("i")
-    
-   //set attribute or class
-    divChild.classList.add("media")
-   
+    const img = document.createElement("img");
+    const source = document.createElement("source");
+    const videoDom = document.createElement("video");
+    const p = document.createElement("p");
+    const span = document.createElement("span");
+    const i = document.createElement("i");
 
-    if(image){
+    //set attribute or class
+    divChild.classList.add("media");
+
+    if (image) {
       img.setAttribute("src", image);
       img.setAttribute("alt", image);
-      img.classList.add("photographer-media")
-  }else{
-    source.setAttribute("src",video)
-    source.setAttribute("type", "video/mp4")
-    videoDom.classList.add("photographer-media")
-  }
-    p.innerText = title
-    span.innerText = likes
-    i.classList.add("fas")
-    i.classList.add("fa-heart")
-    divParent.appendChild(divChild)
+      img.classList.add("photographer-media");
+    } else {
+      source.setAttribute("src", video);
+      source.setAttribute("type", "video/mp4");
+      videoDom.classList.add("photographer-media");
+    }
+    p.innerText = title;
+    span.innerText = likes;
+    i.classList.add("fas");
+    i.classList.add("fa-heart");
+    divParent.appendChild(divChild);
 
-    if(image){
-    divChild.appendChild(img)
-  }else{
-    divChild.appendChild(videoDom)
-    videoDom.appendChild(source)
+    if (image) {
+      divChild.appendChild(img);
+    } else {
+      divChild.appendChild(videoDom);
+      videoDom.appendChild(source);
+    }
+    divChild.appendChild(p);
+    p.appendChild(span);
+    span.appendChild(i);
   }
-    divChild.appendChild(p)
-    p.appendChild(span)
-    span.appendChild(i)
-    
-    
-
-  }
-  return {getMediaDom};
+  return { getMediaDom };
 }
