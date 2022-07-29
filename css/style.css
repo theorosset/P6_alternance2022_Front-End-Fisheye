@@ -1,3 +1,4 @@
+/* global selecteur */
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
@@ -20,7 +21,7 @@ h1 {
   height: 50px;
   margin-left: 100px;
 }
-
+/* photographer*/
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
