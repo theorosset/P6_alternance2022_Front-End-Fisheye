@@ -150,19 +150,60 @@ form input {
   border-radius: 5px;
 }
 /* lightBox */
-.lightBox {
+
+.bloc-lightBox {
   position: fixed;
-  justify-content: center;
   display: flex;
+  justify-content: center;
   align-items: center;
   top: 0;
-  left: 0;
   bottom: 0;
+  left: 0;
   right: 0;
   z-index: 999;
+}
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
+.lightBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: white;
+  width: 700px;
+  height: 523px;
+}
+
+.imageLightBox {
+  height: 453px;
+  width: 566px;
+  object-fit: contain;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.closeLightBox {
+  display: block;
+  color: #901c1c;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-color: white;
+}
+.lightBox .fas {
+  font-size: 36px;
+  color: #901c1c;
+}
 .displayNone {
   display: none;
 }

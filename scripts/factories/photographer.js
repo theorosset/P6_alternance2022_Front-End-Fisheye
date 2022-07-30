@@ -55,7 +55,7 @@ function mediaFactory(data) {
 
     if (image) {
       img.setAttribute("src", image);
-      img.setAttribute("alt", image);
+      img.setAttribute("alt", `picture ${title}`);
       img.classList.add("photographer-media");
     } else {
       source.setAttribute("src", video);

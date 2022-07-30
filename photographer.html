@@ -17,7 +17,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
     </header>
     <main id="main">
       <section class="photograph-header">
@@ -39,7 +39,11 @@
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img
+            src="assets/icons/close.svg"
+            alt="fermer la modale"
+            onclick="closeModal()"
+          />
         </header>
         <form>
           <div>
@@ -50,7 +54,21 @@
         </form>
       </div>
     </div>
-    <div class="lightBox displayNone"></div>
+    <div class="bloc-lightBox displayNone">
+      <div class="overlay">
+        <div class="lightBox">
+          <i class="fas fa-chevron-left" aria-label="previous"></i>
+          <i class="fas fa-chevron-right" aria-label="next"></i>
+          <button
+            class="closeLightBox"
+            type="button"
+            aria-labelledby="close-lightbox"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </div>
     <script src="scripts/factories/Photographer.js"></script>
     <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js"></script>
