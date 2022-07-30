@@ -163,6 +163,12 @@ form input {
 #message {
   height: 90px;
 }
+#errorEmail,
+#errorFirstName,
+#errorLastName {
+  color: black;
+}
+
 /* lightBox */
 
 .bloc-lightBox {
