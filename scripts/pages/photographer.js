@@ -1,6 +1,6 @@
 import { fetchPhotographerById } from "../service/service.js";
 import { fetchPhotographers } from "../service/service.js";
-import { openDiapoOnClick } from "./diaporama.js";
+import { openDiapoOnClick } from "../utils/diaporama.js";
 /**
  * recovery parameter of url
  * @returns {id}
@@ -21,6 +21,11 @@ function insertInDom(photographer) {
   const btnContact = document.querySelector(".contact_button");
 
   photographeHeader.insertBefore(userCardDOM, btnContact);
+
+  //for contact
+  const name = document.querySelector(".photograph-header article h2");
+  const titleForm = document.querySelector(".modal header h2");
+  titleForm.innerText += ` ${name.innerText}`;
 }
 
 //set position

@@ -99,13 +99,21 @@ span .fas {
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 50%;
+  width: 45%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
   margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  margin-top: 20px;
+  max-width: 430px;
+  height: 600px;
 }
 
 .modal header {
@@ -118,9 +126,8 @@ span .fas {
 }
 
 .modal header h2 {
-  font-size: 64px;
+  font-size: 45px;
   font-weight: normal;
-  text-align: center;
 }
 /* formulaire */
 form {
@@ -132,7 +139,11 @@ form {
 
 form label {
   color: #312e2e;
-  font-size: 36px;
+  font-size: 27px;
+}
+
+form .firstName {
+  margin-top: 20px;
 }
 
 form div {
@@ -144,10 +155,13 @@ form div {
 }
 
 form input {
-  width: 100%;
-  height: 68px;
+  width: 95%;
+  height: 40px;
   border: none;
   border-radius: 5px;
+}
+#message {
+  height: 90px;
 }
 /* lightBox */
 
@@ -185,11 +199,12 @@ form input {
 }
 
 .imageLightBox {
-  height: 453px;
-  width: 566px;
+  max-height: 453px;
+  max-width: 566px;
   object-fit: contain;
   margin-left: 20px;
   margin-right: 20px;
+  border-radius: 5px;
 }
 .closeLightBox {
   display: block;
