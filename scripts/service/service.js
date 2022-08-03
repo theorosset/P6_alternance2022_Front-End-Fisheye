@@ -1,4 +1,4 @@
-let dataJson = "../data.json";
+let dataJson = "./data.json";
 
 export async function fetchPhotographers() {
   return fetch(dataJson)
