@@ -26,9 +26,9 @@ function openLightBox(blocLightBox, allMediaDOM, allFetchMedia) {
   allMediaDOM.forEach((media) => {
     media.addEventListener("click", () => {
       blocLightBox.classList.toggle("displayNone");
-      getPictures(allFetchMedia);
     });
   });
+  getPictures(allFetchMedia);
 }
 
 async function getPictures(allFetchMedia) {
@@ -60,9 +60,11 @@ function switchPicture() {
   const imagesDOM = document.querySelectorAll(".imageLightBox");
   const chevronRight = document.querySelector(".fa-chevron-right");
   const chevronLeft = document.querySelector(".fa-chevron-left");
+
   let imageCount = 0;
 
   chevronRight.addEventListener("click", () => {
+    console.log(imageCount);
     imagesDOM[imageCount].classList.add("displayNone");
     imageCount++;
     if (imagesDOM.length <= imageCount) {
