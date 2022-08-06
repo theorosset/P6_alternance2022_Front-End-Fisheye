@@ -20,6 +20,18 @@ function getUrlParams() {
   return id;
 }
 
+function likes() {
+  const iconHeart = document.querySelectorAll(".fa-heart");
+  console.log(iconHeart);
+  iconHeart.forEach((like) => {
+    like.addEventListener("click", (e) => {
+      let numberOfLike = parseInt(e.path[1].innerText);
+      numberOfLike += 1;
+      e.path[1].innerHTML = `${numberOfLike}<i aria-label="likes" class="fas fa-heart" aria-hidden="true"></i>`;
+    });
+  });
+}
+
 //insert element with model in dom
 function insertInDom(photographer) {
   //for header photographer
@@ -121,6 +133,7 @@ async function main() {
   //filter dropDown
   dropDownFilter();
   setOrderBy(mediaPhotographer);
+  likes();
 }
 
 main();
