@@ -1,4 +1,3 @@
-console.log(document.querySelector("header"));
 export function openDiapoOnClick(allMediaDOM, allMediaPhotographer) {
   const blocLightBox = document.querySelector(".bloc-lightBox");
   openLightBox(blocLightBox, allMediaDOM, allMediaPhotographer);
@@ -38,11 +37,23 @@ async function getPictures(allFetchMedia) {
 
   for (let i = 0; i < allFetchMedia.length; i++) {
     const media = allFetchMedia[i];
-    const image = document.createElement("img");
-    image.setAttribute("src", media.image);
-    image.classList.add("imageLightBox");
-    div.appendChild(image);
-    image.insertAdjacentElement("afterend", chevronRight);
+    if (media.image) {
+      const image = document.createElement("img");
+      image.setAttribute("src", media.image);
+      image.classList.add("imageLightBox");
+      div.appendChild(image);
+      image.insertAdjacentElement("afterend", chevronRight);
+    }
+    if (media.video) {
+      const source = document.createElement("source");
+      const videoDom = document.createElement("video");
+      videoDom.setAttribute("controls", "controls");
+      source.setAttribute("src", media.video);
+      source.setAttribute("type", "video/mp4");
+      videoDom.classList.add("imageLightBox");
+      div.appendChild(videoDom);
+      videoDom.appendChild(source);
+    }
   }
   displayHiddenPicture();
   switchPicture();
