@@ -1,5 +1,4 @@
-/* eslint-disable */
-function photographerFactory(data) {
+export function photographerFactory(data) {
   const { name, portrait, tagline, price, city, country, id } = data;
 
   const picture = `assets/photographers/${portrait}`;
@@ -36,7 +35,7 @@ function photographerFactory(data) {
   return { name, picture, getUserCardDOM };
 }
 
-function mediaFactory(data) {
+export function mediaFactory(data) {
   const { title, image, likes, video } = data;
   function getMediaDom() {
     const divParent = document.querySelector(".photograph-section-media");
