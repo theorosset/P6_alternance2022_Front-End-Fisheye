@@ -50,9 +50,12 @@ function setAndRemovePositionInDom() {
 function dropDownFilter() {
   const filterBtn = document.querySelector("#filter");
   const ul = document.querySelector(".filterChoose");
-
+  const iconDown = document.querySelector(".fa-chevron-down");
+  const iconUp = document.querySelector(".fa-chevron-up");
   filterBtn.addEventListener("click", () => {
     ul.classList.toggle("displayNone");
+    iconDown.style.display = iconDown.style.display === "none" ? "" : "none";
+    iconUp.style.display = iconUp.style.display === "none" ? "" : "none";
   });
 }
 
