@@ -54,15 +54,17 @@ export function mediaFactory(data) {
 
     if (image) {
       img.setAttribute("src", image);
-      img.setAttribute("alt", `picture ${title}`);
+      img.setAttribute("alt", `${title}`);
       img.classList.add("photographer-media");
     } else {
       source.setAttribute("src", video);
       source.setAttribute("type", "video/mp4");
+      source.setAttribute("alt", `${title}`);
       videoDom.classList.add("photographer-media");
     }
     p.innerText = title;
     span.innerText = likes;
+    i.setAttribute("aria-label", "likes");
     i.classList.add("fas");
     i.classList.add("fa-heart");
     divParent.appendChild(divChild);

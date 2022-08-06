@@ -40,6 +40,7 @@ async function getPictures(allFetchMedia) {
     if (media.image) {
       const image = document.createElement("img");
       image.setAttribute("src", media.image);
+      image.setAttribute("alt", `${media.title}`);
       image.classList.add("imageLightBox");
       div.appendChild(image);
       image.insertAdjacentElement("afterend", chevronRight);
@@ -50,6 +51,7 @@ async function getPictures(allFetchMedia) {
       videoDom.setAttribute("controls", "controls");
       source.setAttribute("src", media.video);
       source.setAttribute("type", "video/mp4");
+      source.setAttribute("alt", `${media.title}`);
       videoDom.classList.add("imageLightBox");
       div.appendChild(videoDom);
       videoDom.appendChild(source);

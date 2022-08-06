@@ -29,10 +29,17 @@
         <div class="custom">
           <p>Trier par</p>
           <div class="dropDown">
-            <button id="filter" aria-label="trier par filtres">
+            <button id="filter" role="button" aria-label="trier par filtres">
               Populaire
-              <i class="fas fa-chevron-down"></i>
-              <i style="display: none" class="fas fa-chevron-up"></i>
+              <i
+                class="fas fa-chevron-down"
+                aria-label="ouvrir le choix de filtres"
+              ></i>
+              <i
+                style="display: none"
+                aria-label="fermer le choix de filtres"
+                class="fas fa-chevron-up"
+              ></i>
             </button>
             <ul class="displayNone filterChoose">
               <div class="border-bottom"></div>
@@ -79,6 +86,7 @@
             type="submit"
             onclick="submitContainForm()"
             class="contact_button"
+            aria-label="soumettre"
           >
             Envoyer
           </button>
@@ -86,7 +94,12 @@
       </div>
     </div>
     <div class="bloc-lightBox displayNone">
-      <div class="overlay">
+      <div
+        class="overlay"
+        aria-modal="true"
+        role="dialog"
+        aria-label="diaporama des images du photographe"
+      >
         <div class="lightBox">
           <i class="fas fa-chevron-left" aria-label="previous"></i>
           <i class="fas fa-chevron-right" aria-label="next"></i>
