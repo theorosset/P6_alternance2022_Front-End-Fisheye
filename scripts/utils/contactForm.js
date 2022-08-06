@@ -1,13 +1,18 @@
+//disabled eslint because i use function in html files
+
+// eslint-disable-next-line no-unused-vars
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
 }
 
+// eslint-disable-next-line no-unused-vars
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
 }
 
+// eslint-disable-next-line no-unused-vars
 function submitContainForm() {
   const form = document.querySelector("form");
   const formData = new FormData(form);
@@ -24,7 +29,6 @@ function submitContainForm() {
 }
 
 /**
- * enlever les return inutile
  *
  * @param {HtmlInputElement} inputEmail
  * @returns errors if email are not valid
