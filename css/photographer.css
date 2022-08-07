@@ -1,7 +1,7 @@
 /* global selecteur */
 body {
-  margin-right: 0;
-  margin-left: 0;
+  margin: auto;
+  max-width: 1400px;
 }
 
 #main {
@@ -131,6 +131,15 @@ li {
   display: flex;
   justify-content: space-between;
 }
+.fa-chevron-left {
+  position: absolute;
+  left: 30px;
+}
+.fa-chevron-right {
+  position: absolute;
+  right: 30px;
+}
+
 span .fas {
   margin-left: 5px;
   cursor: pointer;
@@ -272,4 +281,41 @@ form input {
 }
 .displayNone {
   display: none;
+}
+
+/* footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 30px;
+  background-color: #db8876;
+  width: 300px;
+  height: 55px;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+}
+
+.likesTotal {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 0px;
+}
+.likesTotal p {
+  margin-right: 10px;
+}
+
+.priceDay {
+  display: flex;
+  align-items: center;
+}
+.numberPrice {
+  margin-right: 3px;
+}
+.infoTotal {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  top: -3px;
+  font-size: 20px;
 }

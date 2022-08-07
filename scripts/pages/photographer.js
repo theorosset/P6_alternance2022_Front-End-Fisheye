@@ -16,12 +16,13 @@ function getUrlParams() {
 
 function likes() {
   const iconHeart = document.querySelectorAll(".fa-heart");
-  console.log(iconHeart);
+
   iconHeart.forEach((like) => {
     like.addEventListener("click", (e) => {
       let numberOfLike = parseInt(e.path[1].innerText);
       numberOfLike += 1;
       e.path[1].innerHTML = `${numberOfLike}<i aria-label="likes" class="fas fa-heart" aria-hidden="true"></i>`;
+      setTotalLikes();
     });
   });
 }
@@ -41,6 +42,17 @@ function insertInDom(photographer) {
   const name = document.querySelector(".photograph-header article h2");
   const titleForm = document.querySelector(".modal header h2");
   titleForm.innerText += ` ${name.innerText}`;
+}
+function setTotalLikes() {
+  const totalLikesDOM = document.querySelector(".likesTotal p");
+  let totalLikes = 0;
+  const likes = document.querySelectorAll(".numberOfLikes");
+  console.log(likes);
+  likes.forEach((like) => {
+    const number = parseInt(like.innerText);
+    totalLikes += number;
+  });
+  return (totalLikesDOM.innerText = totalLikes);
 }
 
 //set position
@@ -99,6 +111,7 @@ async function main() {
   dropDownFilter();
   setOrderBy(mediaPhotographer, likes);
   likes();
+  setTotalLikes();
 }
 
 main();

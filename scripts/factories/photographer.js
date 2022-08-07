@@ -64,6 +64,7 @@ export function mediaFactory(data) {
     }
     p.innerText = title;
     span.innerText = likes;
+    span.classList.add("numberOfLikes");
     i.setAttribute("aria-label", "likes");
     i.classList.add("fas");
     i.classList.add("fa-heart");
