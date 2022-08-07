@@ -1,6 +1,55 @@
 import { mediaFactory } from "../factories/photographer.js";
 
-export function popularitySort(media) {
+export async function setOrderBy(media, likes) {
+  const filterBtn = document.querySelector("#filter");
+  const allLi = document.querySelectorAll("li");
+
+  allLi.forEach((li) => {
+    li.addEventListener("click", (e) => {
+      switch (e.target.innerText) {
+        case "Date":
+          e.target.innerText = filterBtn.innerText;
+          // eslint-disable-next-line quotes
+          filterBtn.innerHTML = `Date <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
+          filterBtn.setAttribute("aria-label", "trier par date");
+          e.target.setAttribute(
+            "aria-label",
+            `trier par ${e.target.innerText}`
+          );
+          dateSort(media);
+          likes();
+          break;
+        case "Populaire":
+          e.target.innerText = filterBtn.innerText;
+          // eslint-disable-next-line quotes
+          filterBtn.innerHTML = `Populaire <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
+          filterBtn.setAttribute("aria-label", "trier par popularité");
+          e.target.setAttribute(
+            "aria-label",
+            `trier par ${e.target.innerText}`
+          );
+          popularitySort(media);
+          likes();
+          break;
+        case "Titre":
+          e.target.innerText = filterBtn.innerText;
+          // eslint-disable-next-line quotes
+          filterBtn.innerHTML = `Titre <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
+          filterBtn.setAttribute("aria-label", "trier par Titre");
+          e.target.setAttribute(
+            "aria-label",
+            `trier par ${e.target.innerText}`
+          );
+          titleSort(media);
+          likes();
+          break;
+      }
+    });
+  });
+}
+
+//sort by popularity
+function popularitySort(media) {
   const mediaSection = document.querySelector(".photograph-section-media");
   console.log(mediaSection);
   function tri(a, b) {
@@ -11,8 +60,8 @@ export function popularitySort(media) {
   createMediaInDom(media);
 }
 
-// Tri par titre
-export function titleSort(media) {
+// sort by title
+function titleSort(media) {
   const mediaSection = document.querySelector(".photograph-section-media");
   function tri(a, b) {
     let titleA = a.title.split(" ").join("");
@@ -34,7 +83,8 @@ export function createMediaInDom(allMedia) {
   });
 }
 
-export function dateSort(media) {
+// sort by date
+function dateSort(media) {
   const mediaSection = document.querySelector(".photograph-section-media");
   function tri(a, b) {
     let dateA = new Date(a.date);

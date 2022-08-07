@@ -2,13 +2,7 @@ import { fetchPhotographerById } from "../service/service.js";
 import { fetchPhotographers } from "../service/service.js";
 import { openDiapoOnClick } from "../utils/diaporama.js";
 import { photographerFactory } from "../factories/photographer.js";
-import {
-  dateSort,
-  popularitySort,
-  titleSort,
-  createMediaInDom,
-} from "../utils/sortMedia.js";
-
+import { createMediaInDom, setOrderBy } from "../utils/sortMedia.js";
 /**
  * recovery parameter of url
  * @returns {id}
@@ -71,36 +65,6 @@ function dropDownFilter() {
   });
 }
 
-async function setOrderBy(media) {
-  const filterBtn = document.querySelector("#filter");
-  const allLi = document.querySelectorAll("li");
-  console.log(filterBtn.innerHTML);
-  allLi.forEach((li) => {
-    li.addEventListener("click", (e) => {
-      switch (e.target.innerText) {
-        case "Date":
-          e.target.innerText = filterBtn.innerText;
-          // eslint-disable-next-line quotes
-          filterBtn.innerHTML = `Date <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
-          dateSort(media);
-          break;
-        case "Populaire":
-          e.target.innerText = filterBtn.innerText;
-          // eslint-disable-next-line quotes
-          filterBtn.innerHTML = `Populaire <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
-          popularitySort(media);
-          break;
-        case "Titre":
-          e.target.innerText = filterBtn.innerText;
-          // eslint-disable-next-line quotes
-          filterBtn.innerHTML = `Titre <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
-          titleSort(media);
-          break;
-      }
-    });
-  });
-}
-
 async function getMediaById(id) {
   let arrayOfMedia = [];
   const { media } = await fetchPhotographers();
@@ -131,8 +95,9 @@ async function main() {
   openDiapoOnClick(allMediaDOM, mediaPhotographer);
 
   //filter dropDown
+
   dropDownFilter();
-  setOrderBy(mediaPhotographer);
+  setOrderBy(mediaPhotographer, likes);
   likes();
 }
 
