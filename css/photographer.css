@@ -50,7 +50,13 @@ body {
   border: none;
   background-color: #901c1c;
   border-radius: 5px;
+  transition-duration: 0.4s;
   cursor: pointer;
+}
+.contact_button:hover {
+  transition-duration: 0.4s;
+  color: black;
+  background-color: #db8876;
 }
 
 /* section media filter */
