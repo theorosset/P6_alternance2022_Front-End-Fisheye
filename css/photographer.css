@@ -133,6 +133,7 @@ li {
 }
 span .fas {
   margin-left: 5px;
+  cursor: pointer;
 }
 
 /* modal */

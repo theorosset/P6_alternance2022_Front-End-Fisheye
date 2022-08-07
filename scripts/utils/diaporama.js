@@ -18,8 +18,10 @@ function closeLightBox(blocLightBox) {
 /**
  *
  * @param {elementHTML} blocLightBox
- * @param {elementsHTML} allMedia
- * open lightBox
+ * @param {elementsHTML} allMediaDOM  media in dom
+ * @param { data } allFetchMedia  media in data.json
+ *
+ * this function open lightBox
  */
 function openLightBox(blocLightBox, allMediaDOM, allFetchMedia) {
   allMediaDOM.forEach((media) => {
@@ -30,6 +32,12 @@ function openLightBox(blocLightBox, allMediaDOM, allFetchMedia) {
   getPictures(allFetchMedia);
 }
 
+/**
+ *
+ * @param { data } allFetchMedia media in data.json
+ *
+ * this function insert media in lightbox
+ */
 async function getPictures(allFetchMedia) {
   const div = document.querySelector(".lightBox");
 
@@ -61,6 +69,7 @@ async function getPictures(allFetchMedia) {
   switchPicture();
 }
 
+// add class displayNone
 function displayHiddenPicture() {
   const imagesDOM = document.querySelectorAll(".imageLightBox");
   for (let i = 1; i < imagesDOM.length; i++) {
@@ -69,6 +78,10 @@ function displayHiddenPicture() {
   }
 }
 
+/**
+ *
+ *  this function control prev and next picture click and arrow
+ */
 function switchPicture() {
   const imagesDOM = document.querySelectorAll(".imageLightBox");
   const chevronRight = document.querySelector(".fa-chevron-right");
@@ -76,22 +89,34 @@ function switchPicture() {
 
   let imageCount = 0;
 
-  chevronRight.addEventListener("click", () => {
-    console.log(imageCount);
+  //go to next picture
+  function nextPicture() {
     imagesDOM[imageCount].classList.add("displayNone");
     imageCount++;
     if (imagesDOM.length <= imageCount) {
       imageCount = 0;
     }
     imagesDOM[imageCount].classList.remove("displayNone");
-  });
-
-  chevronLeft.addEventListener("click", () => {
+  }
+  //go to previous picture
+  function prevPicture() {
     imagesDOM[imageCount].classList.add("displayNone");
     imageCount--;
     if (imageCount < 0) {
       imageCount = imagesDOM.length - 1;
     }
     imagesDOM[imageCount].classList.remove("displayNone");
+  }
+
+  chevronRight.addEventListener("click", () => nextPicture());
+
+  chevronLeft.addEventListener("click", () => prevPicture());
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+      nextPicture();
+    } else if (e.key === "ArrowLeft") {
+      prevPicture();
+    }
   });
 }
