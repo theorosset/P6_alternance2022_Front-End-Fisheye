@@ -23,8 +23,19 @@ function submitContainForm() {
     emailValid(form.email);
     firstNameValid(form.firstName);
     lastNameValid(form.lastName);
+    messageValid(form.message);
 
-    console.log(Object.fromEntries(formData.entries()));
+    if (
+      emailValid(form.email) === true,
+      firstNameValid(form.firstName) === true,
+      lastNameValid(form.lastName) === true,
+      messageValid(form.message) === true,
+      emailValid(form.email) === true
+    ) {
+      console.log(Object.fromEntries(formData.entries()));
+    } else {
+      alert("Certain champs sont mal remplis");
+    }
   });
 }
 
@@ -70,4 +81,14 @@ function lastNameValid(inputLastName) {
       "Votre Nom doit faire minimum 2 caratères");
   }
   return (document.querySelector("#errorLastName").innerText = ""), true;
+}
+
+function messageValid(inputMessage) {
+  const lastNameTrim = inputMessage.value.trim();
+
+  if (lastNameTrim.length < 5) {
+    return (document.querySelector("#errorMessage").innerText =
+      "Votre message doit faire minimum 5 caratères");
+  }
+  return (document.querySelector("#errorMessage").innerText = ""), true;
 }
