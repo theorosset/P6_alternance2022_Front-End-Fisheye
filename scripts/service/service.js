@@ -1,4 +1,4 @@
-let dataJson = "./data.json";
+const dataJson = "./data.json";
 
 export async function fetchPhotographers() {
   return fetch(dataJson)
@@ -10,6 +10,12 @@ export async function fetchPhotographers() {
     });
 }
 
+/**
+ * 
+ * @param {Id} idPhotographer 
+ * @returns one photographer by Id
+ * 
+ */
 export async function fetchPhotographerById(idPhotographer) {
   return fetch(dataJson)
     .then((res) => {

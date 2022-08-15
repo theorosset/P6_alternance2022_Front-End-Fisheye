@@ -23,11 +23,11 @@ function redirectToPagePhotographer() {
   });
 }
 
-async function init() {
+async function main() {
   // Récupère les datas des photographes
   const { photographers } = await fetchPhotographers();
   displayData(photographers);
   redirectToPagePhotographer(photographers);
 }
 
-init();
+main();

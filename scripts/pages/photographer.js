@@ -43,11 +43,12 @@ function insertInDom(photographer) {
   const titleForm = document.querySelector(".modal header h2");
   titleForm.innerText += ` ${name.innerText}`;
 }
+
+//like total
 function setTotalLikes() {
   const totalLikesDOM = document.querySelector(".likesTotal p");
   let totalLikes = 0;
   const likes = document.querySelectorAll(".numberOfLikes");
-  console.log(likes);
   likes.forEach((like) => {
     const number = parseInt(like.innerText);
     totalLikes += number;
@@ -66,10 +67,13 @@ function setAndRemovePositionInDom() {
 
 //filter
 function dropDownFilter() {
+  //take element in dom
   const filterBtn = document.querySelector("#filter");
   const ul = document.querySelector(".filterChoose");
   const iconDown = document.querySelector(".fa-chevron-down");
   const iconUp = document.querySelector(".fa-chevron-up");
+
+//event dropDown
   filterBtn.addEventListener("click", () => {
     ul.classList.toggle("displayNone");
     iconDown.style.display = iconDown.style.display === "none" ? "" : "none";
@@ -81,7 +85,6 @@ async function getMediaById(id) {
   let arrayOfMedia = [];
   const { media } = await fetchPhotographers();
   media.forEach((media) => {
-    //voir pour trier ici direct
     if (media.photographerId === parseInt(id)) {
       arrayOfMedia.push(media);
     }
@@ -94,7 +97,7 @@ async function main() {
   //get id
   const idPhotographer = getUrlParams();
   const getOnePhotographer = await fetchPhotographerById(idPhotographer);
-  //voir pour trier ici aussi
+
   //import media of photographer
   const mediaPhotographer = await getMediaById(idPhotographer);
   //insert element in dom
@@ -107,7 +110,6 @@ async function main() {
   openDiapoOnClick(allMediaDOM, mediaPhotographer);
 
   //filter dropDown
-
   dropDownFilter();
   setOrderBy(mediaPhotographer, likes);
   likes();
