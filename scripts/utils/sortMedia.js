@@ -1,6 +1,6 @@
 import { mediaFactory } from "../factories/photographer.js";
 
-export async function setOrderBy(media, likes) {
+export function setOrderBy(media, likes) {
   const filterBtn = document.querySelector("#filter");
   const allLi = document.querySelectorAll("li");
 
