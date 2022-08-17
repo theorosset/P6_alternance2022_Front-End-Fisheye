@@ -38,7 +38,7 @@ function openLightBox(blocLightBox, allMediaDOM, allFetchMedia) {
  *
  * this function insert media in lightbox
  */
-async function getPictures(allFetchMedia) {
+function getPictures(allFetchMedia) {
   const div = document.querySelector(".lightBox");
 
   const chevronRight = document.querySelector(".fa-chevron-right");
