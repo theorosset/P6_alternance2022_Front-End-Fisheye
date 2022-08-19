@@ -55,7 +55,7 @@ function emailValid(inputEmail) {
    */
   if (emailTest === false) {
     return (document.querySelector("#errorEmail").innerText =
-      "Veuillez entrer un email valide");
+      "Veuillez entrer un email valide"),false;
   }
 
   //else nothing are add
@@ -67,7 +67,7 @@ function firstNameValid(inputFirstName) {
   const firstNameTrim = inputFirstName.value.trim();
   if (firstNameTrim.length < 2) {
     return (document.querySelector("#errorFirstName").innerText =
-      "Votre Prénom doit faire minimum 2 caratères");
+      "Votre Prénom doit faire minimum 2 caratères"), false;
   }
   return (document.querySelector("#errorFirstName").innerText = ""), true;
 }
@@ -78,7 +78,7 @@ function lastNameValid(inputLastName) {
 
   if (lastNameTrim.length < 2) {
     return (document.querySelector("#errorLastName").innerText =
-      "Votre Nom doit faire minimum 2 caratères");
+      "Votre Nom doit faire minimum 2 caratères"), false;
   }
   return (document.querySelector("#errorLastName").innerText = ""), true;
 }
@@ -88,7 +88,7 @@ function messageValid(inputMessage) {
 
   if (lastNameTrim.length < 5) {
     return (document.querySelector("#errorMessage").innerText =
-      "Votre message doit faire minimum 5 caratères");
+      "Votre message doit faire minimum 5 caratères"), false;
   }
   return (document.querySelector("#errorMessage").innerText = ""), true;
 }
