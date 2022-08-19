@@ -12,7 +12,7 @@ async function displayData(photographers) {
   });
 }
 
-function redirectToPagePhotographer() {
+function settingPhotographerRedirections() {
   const articles = document.querySelectorAll("article");
   articles.forEach((article) => {
     article.addEventListener("click", () => {
@@ -27,7 +27,7 @@ async function main() {
   // Récupère les datas des photographes
   const { photographers } = await fetchPhotographers();
   displayData(photographers);
-  redirectToPagePhotographer(photographers);
+  settingPhotographerRedirections(photographers);
 }
 
 main();

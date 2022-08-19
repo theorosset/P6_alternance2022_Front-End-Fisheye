@@ -29,7 +29,7 @@ function openLightBox(blocLightBox, allMediaDOM, allFetchMedia) {
       blocLightBox.classList.toggle("displayNone");
     });
   });
-  getPictures(allFetchMedia);
+  displayPictures(allFetchMedia);
 }
 
 /**
@@ -38,7 +38,7 @@ function openLightBox(blocLightBox, allMediaDOM, allFetchMedia) {
  *
  * this function insert media in lightbox
  */
-function getPictures(allFetchMedia) {
+function displayPictures(allFetchMedia) {
   const div = document.querySelector(".lightBox");
 
   const chevronRight = document.querySelector(".fa-chevron-right");

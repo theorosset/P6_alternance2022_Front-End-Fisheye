@@ -1,5 +1,5 @@
 import { fetchPhotographerById } from "../service/service.js";
-import { fetchPhotographers } from "../service/service.js";
+import { fetchMediaByPhotographerId } from "../service/service.js";
 import { openDiapoOnClick } from "../utils/diaporama.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { createMediaInDom, setOrderBy } from "../utils/sortMedia.js";
@@ -81,16 +81,6 @@ function dropDownFilter() {
   });
 }
 
-async function getMediaById(id) {
-  let arrayOfMedia = [];
-  const { media } = await fetchPhotographers();
-  media.forEach((media) => {
-    if (media.photographerId === parseInt(id)) {
-      arrayOfMedia.push(media);
-    }
-  });
-  return arrayOfMedia;
-}
 
 //function main
 async function main() {
@@ -99,7 +89,7 @@ async function main() {
   const getOnePhotographer = await fetchPhotographerById(idPhotographer);
 
   //import media of photographer
-  const mediaPhotographer = await getMediaById(idPhotographer);
+  const mediaPhotographer = await fetchMediaByPhotographerId(idPhotographer);
   //insert element in dom
   insertInDom(getOnePhotographer);
   createMediaInDom(mediaPhotographer);

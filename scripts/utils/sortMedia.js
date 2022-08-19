@@ -52,10 +52,10 @@ export function setOrderBy(media, likes) {
 function popularitySort(media) {
   const mediaSection = document.querySelector(".photograph-section-media");
   console.log(mediaSection);
-  function tri(a, b) {
+  function sort(a, b) {
     return a.likes < b.likes ? 1 : a.likes == b.likes ? 0 : -1;
   }
-  media.sort(tri);
+  media.sort(sort);
   mediaSection.innerHTML = "";
   createMediaInDom(media);
 }
@@ -63,14 +63,14 @@ function popularitySort(media) {
 // sort by title
 function titleSort(media) {
   const mediaSection = document.querySelector(".photograph-section-media");
-  function tri(a, b) {
+  function sort(a, b) {
     let titleA = a.title.split(" ").join("");
     a = titleA.toLowerCase();
     let titleB = b.title.split(" ").join("");
     b = titleB.toLowerCase();
     return a < b ? -1 : 1;
   }
-  media.sort(tri);
+  media.sort(sort);
   mediaSection.innerHTML = "";
   createMediaInDom(media);
 }
@@ -86,12 +86,12 @@ export function createMediaInDom(allMedia) {
 // sort by date
 function dateSort(media) {
   const mediaSection = document.querySelector(".photograph-section-media");
-  function tri(a, b) {
+  function sort(a, b) {
     let dateA = new Date(a.date);
     let dateB = new Date(b.date);
     return dateA < dateB ? 1 : dateA == dateB ? 0 : -1;
   }
-  media.sort(tri);
+  media.sort(sort);
   mediaSection.innerHTML = "";
   createMediaInDom(media);
 }
