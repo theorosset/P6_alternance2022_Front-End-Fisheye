@@ -6,7 +6,7 @@ export async function fetchPhotographers() {
       return res.json();
     })
     .catch((err) => {
-      return err;
+      return console.error(err);
     });
 }
 
@@ -27,7 +27,7 @@ export async function fetchPhotographerById(idPhotographer) {
       });
     })
     .catch((err) => {
-      return err;
+      return console.error(err);
     });
 }
 
@@ -48,6 +48,6 @@ export async function fetchMediaByPhotographerId(idPhotographer) {
       return arrayOfMedia;
     })
     .catch((err) => {
-      return err;
+      return console.error(err);
     });
 }
