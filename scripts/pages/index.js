@@ -16,8 +16,7 @@ function settingPhotographerRedirections() {
   const articles = document.querySelectorAll("article");
   articles.forEach((article) => {
     article.addEventListener("click", () => {
-      const articleClosest = article.closest("article");
-      const articleId = articleClosest.dataset.id;
+      const articleId = article.dataset.id;
       document.location.href = `photographer.html?id=${articleId}`;
     });
   });
