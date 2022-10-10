@@ -1,7 +1,7 @@
 import { fetchPhotographers } from "../service/service.js";
 import { photographerFactory } from "../factories/photographer.js";
 
-async function displayData(photographers) {
+function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
