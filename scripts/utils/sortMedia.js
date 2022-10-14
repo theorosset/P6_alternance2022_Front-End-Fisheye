@@ -1,11 +1,18 @@
 import { mediaFactory } from "../factories/photographer.js";
 
+/**
+ * 
+ * @param { Object[] } media 
+ * @param { function } likes 
+ */
 export function setOrderBy(media, likes) {
   const filterBtn = document.querySelector("#filter");
   const allLi = document.querySelectorAll("li");
 
   allLi.forEach((li) => {
+    //add event listener for all Li
     li.addEventListener("click", (e) => {
+      //condition if click on data or popularity or title
       switch (e.target.innerText) {
         case "Date":
           e.target.innerText = filterBtn.innerText;
