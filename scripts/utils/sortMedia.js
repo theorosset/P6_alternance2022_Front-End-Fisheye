@@ -9,37 +9,25 @@ export function setOrderBy(media, likes) {
       switch (e.target.innerText) {
         case "Date":
           e.target.innerText = filterBtn.innerText;
-          // eslint-disable-next-line quotes
-          filterBtn.innerHTML = `Date <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
+          filterBtn.innerHTML = "Date <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
           filterBtn.setAttribute("aria-label", "trier par date");
-          e.target.setAttribute(
-            "aria-label",
-            `trier par ${e.target.innerText}`
-          );
+          e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
           dateSort(media);
           likes();
           break;
         case "Populaire":
           e.target.innerText = filterBtn.innerText;
-          // eslint-disable-next-line quotes
-          filterBtn.innerHTML = `Populaire <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
+          filterBtn.innerHTML = "Populaire <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
           filterBtn.setAttribute("aria-label", "trier par popularité");
-          e.target.setAttribute(
-            "aria-label",
-            `trier par ${e.target.innerText}`
-          );
+          e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
           popularitySort(media);
           likes();
           break;
         case "Titre":
           e.target.innerText = filterBtn.innerText;
-          // eslint-disable-next-line quotes
-          filterBtn.innerHTML = `Titre <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
+          filterBtn.innerHTML = "Titre <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
           filterBtn.setAttribute("aria-label", "trier par Titre");
-          e.target.setAttribute(
-            "aria-label",
-            `trier par ${e.target.innerText}`
-          );
+          e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
           titleSort(media);
           likes();
           break;
@@ -77,7 +65,6 @@ function titleSort(media) {
 
 export function createMediaInDom(allMedia) {
   allMedia.forEach((media) => {
-    // eslint-disable-next-line no-undef
     const mediaModel = mediaFactory(media);
     mediaModel.getMediaDom();
   });
