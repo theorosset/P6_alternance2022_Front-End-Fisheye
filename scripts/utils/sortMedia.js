@@ -46,7 +46,6 @@ export function setOrderBy(media, likes) {
 //sort by popularity
 function popularitySort(media) {
   const mediaSection = document.querySelector(".photograph-section-media");
-  console.log(mediaSection);
   function sort(a, b) {
     return a.likes < b.likes ? 1 : a.likes == b.likes ? 0 : -1;
   }
