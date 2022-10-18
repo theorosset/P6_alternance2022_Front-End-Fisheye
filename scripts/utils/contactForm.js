@@ -26,10 +26,10 @@ function submitContainForm() {
     messageValid(form.message);
 
     if (
-      emailValid(form.email) === true,
-      firstNameValid(form.firstName) === true,
-      lastNameValid(form.lastName) === true,
-      messageValid(form.message) === true,
+      emailValid(form.email) === true &&
+      firstNameValid(form.firstName) === true &&
+      lastNameValid(form.lastName) === true &&
+      messageValid(form.message) === true &&
       emailValid(form.email) === true
     ) {
       console.log(Object.fromEntries(formData.entries()));
@@ -84,9 +84,10 @@ function lastNameValid(inputLastName) {
 }
 
 function messageValid(inputMessage) {
-  const lastNameTrim = inputMessage.value.trim();
+  const messageValueTrim = inputMessage.value.trim();
 
-  if (lastNameTrim.length < 5) {
+  if (messageValueTrim.length < 5) {
+    console.log("ok");
     return (document.querySelector("#errorMessage").innerText =
       "Votre message doit faire minimum 5 caratères"), false;
   }
