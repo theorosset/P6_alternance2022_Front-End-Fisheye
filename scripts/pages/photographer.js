@@ -8,9 +8,9 @@ import { createMediaInDom, setOrderBy } from "../utils/sortMedia.js";
  * @returns {id}
  */
 function getUrlParams() {
-  let url = window.location.search;
-  let params = new URLSearchParams(url);
-  let id = params.get("id");
+  const url = window.location.search;
+  const params = new URLSearchParams(url);
+  const id = params.get("id");
   return id;
 }
 
