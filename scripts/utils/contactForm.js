@@ -87,7 +87,6 @@ function messageValid(inputMessage) {
   const messageValueTrim = inputMessage.value.trim();
 
   if (messageValueTrim.length < 5) {
-    console.log("ok");
     return (document.querySelector("#errorMessage").innerText =
       "Votre message doit faire minimum 5 caratères"), false;
   }
