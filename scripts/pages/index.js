@@ -13,10 +13,18 @@ function displayData(photographers) {
 
 function settingPhotographerRedirections() {
   const articles = document.querySelectorAll("article");
+
+  function redirection(article) {
+    const articleId = article.dataset.id;
+    document.location.href = `photographer.html?id=${articleId}`;
+  }
+
   articles.forEach((article) => {
-    article.addEventListener("click", () => {
-      const articleId = article.dataset.id;
-      document.location.href = `photographer.html?id=${articleId}`;
+    article.addEventListener("click", () => redirection(article));
+    article.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        redirection(article);
+      }
     });
   });
 }

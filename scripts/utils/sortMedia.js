@@ -1,4 +1,4 @@
-import { mediaFactory } from "../factories/photographer.js";
+import { mediaFactory } from "../factories/photographerMedia.js";
 
 /**
  * 
