@@ -24,9 +24,13 @@ function closeLightBox(blocLightBox) {
  * this function open lightBox
  */
 function openLightBox(blocLightBox, allMediaDOM, allFetchMedia) {
+
   allMediaDOM.forEach((media) => {
-    media.addEventListener("click", () => {
-      blocLightBox.classList.toggle("displayNone");
+    media.addEventListener("click", () => blocLightBox.classList.toggle("displayNone"));
+    media.addEventListener("keydown", (e) => { 
+      if (e.key === "Enter") { 
+        return blocLightBox.classList.toggle("displayNone"); 
+      }
     });
   });
   displayPictures(allFetchMedia);
