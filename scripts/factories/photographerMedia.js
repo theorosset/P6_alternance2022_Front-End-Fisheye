@@ -31,7 +31,7 @@ export function mediaFactory(data) {
       span.innerText = likes;
       span.classList.add("numberOfLikes");
       i.setAttribute("aria-label", "likes");
-      i.setAttribute("tabindex", "1");
+      i.setAttribute("tabindex", "0");
       i.classList.add("fas");
       i.classList.add("fa-heart");
       divParent.appendChild(divChild);

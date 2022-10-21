@@ -13,8 +13,8 @@ export function photographerFactory(data) {
     const h2 = document.createElement("h2");
     //set attribute or class
     article.setAttribute("data-id", id);
+    article.setAttribute("tabindex", "0");
     img.setAttribute("src", picture);
-    img.setAttribute("tabindex", "0");
     img.setAttribute("alt", `Photo de profil de ${name}`);
     countryCity.classList.add("countryCityPhotographer");
     tagLine.classList.add("tagLinePhotographer");

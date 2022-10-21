@@ -17,7 +17,9 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      <a href="index.html" aria-label="retourner a la page d'accueil">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      </a>
     </header>
     <main id="main">
       <section class="photograph-header">
@@ -56,13 +58,14 @@
           <header>
             <h2>Contactez-moi</h2>
             <img
+              tabindex="1"
               src="assets/icons/close.svg"
               alt="fermer la modale"
               onclick="closeModal()"
             />
           </header>
           <form>
-            <div class="firstName">
+            <div class="firstName" tabindex="0">
               <label for="firstName">Prénom</label>
               <input type="text" id="firstName" name="firstName" />
               <span id="errorFirstName"></span>
