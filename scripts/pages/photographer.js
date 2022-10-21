@@ -17,12 +17,18 @@ function getUrlParams() {
 function likes() {
   const iconHeart = document.querySelectorAll(".fa-heart");
 
+  function addLikes(e) {
+    let numberOfLike = parseInt(e.path[1].innerText);
+    numberOfLike += 1;
+    e.path[1].innerHTML = `${numberOfLike}<i aria-label="likes" class="fas fa-heart" aria-hidden="true"></i>`;
+    setTotalLikes();
+  }
   iconHeart.forEach((like) => {
-    like.addEventListener("click", (e) => {
-      let numberOfLike = parseInt(e.path[1].innerText);
-      numberOfLike += 1;
-      e.path[1].innerHTML = `${numberOfLike}<i aria-label="likes" class="fas fa-heart" aria-hidden="true"></i>`;
-      setTotalLikes();
+    like.addEventListener("click", (e) => addLikes(e));
+    like.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        addLikes(e);
+      }
     });
   });
 }
@@ -73,14 +79,13 @@ function dropDownFilter() {
   const iconDown = document.querySelector(".fa-chevron-down");
   const iconUp = document.querySelector(".fa-chevron-up");
 
-//event dropDown
+  //event dropDown
   filterBtn.addEventListener("click", () => {
     ul.classList.toggle("displayNone");
     iconDown.style.display = iconDown.style.display === "none" ? "" : "none";
     iconUp.style.display = iconUp.style.display === "none" ? "" : "none";
   });
 }
-
 
 //function main
 async function main() {
