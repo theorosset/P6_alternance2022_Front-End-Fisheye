@@ -14,15 +14,21 @@ function getUrlParams() {
   return id;
 }
 
+//function for like and addLike in total likes
 function likes() {
   const iconHeart = document.querySelectorAll(".fa-heart");
+  let totalLikesDOM = document.querySelector(".likesTotal p");
 
   function addLikes(e) {
     let numberOfLike = parseInt(e.path[1].innerText);
+    let totalLikesDOMParse = parseInt(document.querySelector(".likesTotal p").innerText);
     numberOfLike += 1;
     e.path[1].innerHTML = `${numberOfLike}<i aria-label="likes" class="fas fa-heart" aria-hidden="true"></i>`;
-    setTotalLikes();
+    totalLikesDOMParse += 1;
+
+    return totalLikesDOM.innerText = totalLikesDOMParse;
   }
+
   iconHeart.forEach((like) => {
     like.addEventListener("click", (e) => addLikes(e));
     like.addEventListener("keydown", (e) => {
@@ -51,14 +57,14 @@ function insertInDom(photographer) {
 }
 
 //like total
-function setTotalLikes() {
-  const totalLikesDOM = document.querySelector(".likesTotal p");
+function setTotalLikes(allMedia) {
   let totalLikes = 0;
-  const likes = document.querySelectorAll(".numberOfLikes");
-  likes.forEach((like) => {
-    const number = parseInt(like.innerText);
-    totalLikes += number;
+  
+  allMedia.forEach((item) => {
+    totalLikes += item.likes;
   });
+  const totalLikesDOM = document.querySelector(".likesTotal p");
+
   return (totalLikesDOM.innerText = totalLikes);
 }
 
@@ -95,6 +101,7 @@ async function main() {
 
   //import media of photographer
   const mediaPhotographer = await fetchMediaByPhotographerId(idPhotographer);
+
   //insert element in dom
   insertInDom(getOnePhotographer);
   createMediaInDom(mediaPhotographer);
@@ -108,7 +115,7 @@ async function main() {
   dropDownFilter();
   setOrderBy(mediaPhotographer, likes);
   likes();
-  setTotalLikes();
+  setTotalLikes(mediaPhotographer);
 }
 
 main();
