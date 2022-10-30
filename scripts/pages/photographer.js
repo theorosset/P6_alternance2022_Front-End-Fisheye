@@ -58,12 +58,12 @@ function insertInDom(photographer) {
 
 //like total
 function setTotalLikes(allMedia) {
+  const totalLikesDOM = document.querySelector(".likesTotal p");
   let totalLikes = 0;
-  
+
   allMedia.forEach((item) => {
     totalLikes += item.likes;
   });
-  const totalLikesDOM = document.querySelector(".likesTotal p");
 
   return (totalLikesDOM.innerText = totalLikes);
 }
@@ -117,5 +117,4 @@ async function main() {
   likes();
   setTotalLikes(mediaPhotographer);
 }
-
 main();

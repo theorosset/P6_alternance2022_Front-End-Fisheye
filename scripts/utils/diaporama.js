@@ -1,6 +1,6 @@
 export function openDiapoOnClick(allMediaDOM, allMediaPhotographer) {
   const blocLightBox = document.querySelector(".bloc-lightBox");
-  openLightBox(blocLightBox, allMediaDOM, allMediaPhotographer);
+  openLightBox(allMediaDOM, allMediaPhotographer);
   closeLightBox(blocLightBox);
 }
 /**
@@ -10,8 +10,11 @@ export function openDiapoOnClick(allMediaDOM, allMediaPhotographer) {
  */
 function closeLightBox(blocLightBox) {
   const cross = document.querySelector(".closeLightBox");
+  const allMedia = document.querySelectorAll(".imageLightBox");
+
   cross.addEventListener("click", () => {
     blocLightBox.classList.toggle("displayNone");
+    allMedia.forEach((media) => media.classList.add("displayNone"));
   });
 }
 
@@ -23,13 +26,19 @@ function closeLightBox(blocLightBox) {
  *
  * this function open lightBox
  */
-function openLightBox(blocLightBox, allMediaDOM, allFetchMedia) {
+export function toggleLightBox(media) {
+  const blocLightBox = document.querySelector(".bloc-lightBox");
+  blocLightBox.classList.toggle("displayNone");
+  displayHiddenPicture(media);
+}
 
+function openLightBox(allMediaDOM, allFetchMedia) {
   allMediaDOM.forEach((media) => {
-    media.addEventListener("click", () => blocLightBox.classList.toggle("displayNone"));
+    media.addEventListener("click", (event) => toggleLightBox(event.target));
+
     media.addEventListener("keydown", (e) => { 
       if (e.key === "Enter") { 
-        return blocLightBox.classList.toggle("displayNone"); 
+        toggleLightBox(media);
       }
     });
   });
@@ -69,16 +78,18 @@ function displayPictures(allFetchMedia) {
       videoDom.appendChild(source);
     }
   }
-  displayHiddenPicture();
   switchPicture();
 }
 
 // add class displayNone
-function displayHiddenPicture() {
-  const imagesDOM = document.querySelectorAll(".imageLightBox");
-  for (let i = 1; i < imagesDOM.length; i++) {
+function displayHiddenPicture(media) {
+  const imagesDOM = Array.from(document.querySelectorAll(".imageLightBox"));
+  const imageClick = imagesDOM.find((image) => image.alt === media.alt);
+  
+  for (let i = 0; i < imagesDOM.length; i++) {
     const image = imagesDOM[i];
     image.classList.add("displayNone");
+    imageClick.classList.remove("displayNone");
   }
 }
 
@@ -87,34 +98,44 @@ function displayHiddenPicture() {
  *  this function control prev and next picture click and arrow
  */
 function switchPicture() {
-  const imagesDOM = document.querySelectorAll(".imageLightBox");
+  const imagesDOM = Array.from(document.querySelectorAll(".imageLightBox"));
   const chevronRight = document.querySelector(".fa-chevron-right");
   const chevronLeft = document.querySelector(".fa-chevron-left");
 
-  let imageCount = 0;
-
+  let displayImage = imagesDOM.findIndex((image) => !image.classList.contains("displayNone"));
+  
   //go to next picture
   function nextPicture() {
-    imagesDOM[imageCount].classList.add("displayNone");
-    imageCount++;
-    if (imagesDOM.length <= imageCount) {
-      imageCount = 0;
+    imagesDOM[displayImage].classList.add("displayNone");
+    displayImage++;
+    if (imagesDOM.length <= displayImage) {
+      displayImage = 0;
     }
-    imagesDOM[imageCount].classList.remove("displayNone");
+    imagesDOM[displayImage].classList.remove("displayNone");
   }
   //go to previous picture
   function prevPicture() {
-    imagesDOM[imageCount].classList.add("displayNone");
-    imageCount--;
-    if (imageCount < 0) {
-      imageCount = imagesDOM.length - 1;
+    imagesDOM[displayImage].classList.add("displayNone");
+    displayImage--;
+    if (displayImage < 0) {
+      displayImage = imagesDOM.length - 1;
     }
-    imagesDOM[imageCount].classList.remove("displayNone");
+    imagesDOM[displayImage].classList.remove("displayNone");
   }
 
   chevronRight.addEventListener("click", () => nextPicture());
+  chevronRight.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") {
+      nextPicture();
+    }
+  });
 
   chevronLeft.addEventListener("click", () => prevPicture());
+  chevronLeft.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") {
+      prevPicture();
+    }
+  });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") {

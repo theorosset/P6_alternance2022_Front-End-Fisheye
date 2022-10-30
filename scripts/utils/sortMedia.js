@@ -1,4 +1,6 @@
+/* eslint-disable no-case-declarations */
 import { mediaFactory } from "../factories/photographerMedia.js";
+import { openDiapoOnClick } from "./diaporama.js";
 
 /**
  * 
@@ -19,7 +21,8 @@ export function setOrderBy(media, likes) {
           filterBtn.innerHTML = "Date <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
           filterBtn.setAttribute("aria-label", "trier par date");
           e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
-          dateSort(media);
+          const mediaSort = dateSort(media);
+          openDiapoOnClick(mediaSort, media);
           likes();
           break;
         case "Populaire":
@@ -28,6 +31,7 @@ export function setOrderBy(media, likes) {
           filterBtn.setAttribute("aria-label", "trier par popularité");
           e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
           popularitySort(media);
+          openDiapoOnClick(mediaSort, media);
           likes();
           break;
         case "Titre":
@@ -36,6 +40,7 @@ export function setOrderBy(media, likes) {
           filterBtn.setAttribute("aria-label", "trier par Titre");
           e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
           titleSort(media);
+          openDiapoOnClick(mediaSort, media);
           likes();
           break;
       }
@@ -52,6 +57,7 @@ function popularitySort(media) {
   media.sort(sort);
   mediaSection.innerHTML = "";
   createMediaInDom(media);
+  return Array.from(mediaSection.children);
 }
 
 // sort by title
@@ -67,6 +73,7 @@ function titleSort(media) {
   media.sort(sort);
   mediaSection.innerHTML = "";
   createMediaInDom(media);
+  return Array.from(mediaSection.children);
 }
 
 export function createMediaInDom(allMedia) {
@@ -87,4 +94,5 @@ function dateSort(media) {
   media.sort(sort);
   mediaSection.innerHTML = "";
   createMediaInDom(media);
+  return Array.from(mediaSection.children);
 }
