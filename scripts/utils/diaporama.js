@@ -12,11 +12,14 @@ export function openDiapoOnClick(allMediaDOM, allMediaPhotographer) {
  */
 function closeLightBox(blocLightBox) {
   const cross = document.querySelector(".closeLightBox");
-  const allMedia = document.querySelectorAll(".imageLightBox");
 
   cross.addEventListener("click", () => {
-    blocLightBox.classList.toggle("displayNone");
-    allMedia.forEach((media) => media.classList.add("displayNone"));
+    blocLightBox.classList.add("displayNone");
+  });
+  cross.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") {
+      blocLightBox.classList.add("displayNone");
+    }
   });
 }
 
