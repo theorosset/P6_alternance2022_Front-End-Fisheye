@@ -21,8 +21,8 @@ export function setOrderBy(media, likes) {
           filterBtn.innerHTML = "Date <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
           filterBtn.setAttribute("aria-label", "trier par date");
           e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
-          const mediaSort = dateSort(media);
-          openDiapoOnClick(mediaSort, media);
+          const mediaDateSort = dateSort(media);
+          openDiapoOnClick(mediaDateSort, media);
           likes();
           break;
         case "Populaire":
@@ -30,8 +30,8 @@ export function setOrderBy(media, likes) {
           filterBtn.innerHTML = "Populaire <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
           filterBtn.setAttribute("aria-label", "trier par popularité");
           e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
-          popularitySort(media);
-          openDiapoOnClick(mediaSort, media);
+          const mediaPopSort = popularitySort(media);
+          openDiapoOnClick(mediaPopSort, media);
           likes();
           break;
         case "Titre":
@@ -39,8 +39,8 @@ export function setOrderBy(media, likes) {
           filterBtn.innerHTML = "Titre <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
           filterBtn.setAttribute("aria-label", "trier par Titre");
           e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
-          titleSort(media);
-          openDiapoOnClick(mediaSort, media);
+          const mediaTitleSort = titleSort(media);
+          openDiapoOnClick(mediaTitleSort, media);
           likes();
           break;
       }

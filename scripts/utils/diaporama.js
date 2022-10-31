@@ -1,3 +1,5 @@
+let displayImage;
+
 export function openDiapoOnClick(allMediaDOM, allMediaPhotographer) {
   const blocLightBox = document.querySelector(".bloc-lightBox");
   openLightBox(allMediaDOM, allMediaPhotographer);
@@ -27,8 +29,11 @@ function closeLightBox(blocLightBox) {
  * this function open lightBox
  */
 export function toggleLightBox(media) {
+  const imagesDOM = Array.from(document.querySelectorAll(".imageLightBox"));
   const blocLightBox = document.querySelector(".bloc-lightBox");
   blocLightBox.classList.toggle("displayNone");
+  
+  displayImage = imagesDOM.findIndex((item) => item.getAttribute("alt") === media.getAttribute("alt"));
   displayHiddenPicture(media);
 }
 
@@ -102,10 +107,9 @@ function switchPicture() {
   const chevronRight = document.querySelector(".fa-chevron-right");
   const chevronLeft = document.querySelector(".fa-chevron-left");
 
-  let displayImage = imagesDOM.findIndex((image) => !image.classList.contains("displayNone"));
-  
   //go to next picture
   function nextPicture() {
+    console.log(displayImage);
     imagesDOM[displayImage].classList.add("displayNone");
     displayImage++;
     if (imagesDOM.length <= displayImage) {
