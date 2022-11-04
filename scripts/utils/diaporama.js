@@ -68,21 +68,29 @@ function displayPictures(allFetchMedia) {
     const media = allFetchMedia[i];
     if (media.image) {
       const image = document.createElement("img");
+      const p = document.createElement("p");
       image.setAttribute("src", media.image);
       image.setAttribute("alt", `${media.title}`);
       image.classList.add("imageLightBox");
+      p.classList.add("imageName");
+      p.innerText = image.getAttribute("alt");
       div.appendChild(image);
+      div.appendChild(p);
       image.insertAdjacentElement("afterend", chevronRight);
     }
     if (media.video) {
       const source = document.createElement("source");
       const videoDom = document.createElement("video");
+      const p = document.createElement("p");
       videoDom.setAttribute("controls", "controls");
       source.setAttribute("src", media.video);
       source.setAttribute("type", "video/mp4");
       source.setAttribute("alt", `${media.title}`);
       videoDom.classList.add("imageLightBox");
+      p.classList.add("imageName");
+      p.innerText = source.getAttribute("alt");
       div.appendChild(videoDom);
+      div.appendChild(p);
       videoDom.appendChild(source);
     }
   }
@@ -92,12 +100,21 @@ function displayPictures(allFetchMedia) {
 // add class displayNone
 function displayHiddenPicture(media) {
   const imagesDOM = Array.from(document.querySelectorAll(".imageLightBox"));
+  const pImageDOM = Array.from(document.querySelectorAll(".imageName"));
+
   const imageClick = imagesDOM.find((image) => image.alt === media.alt);
-  
+  let pOfimageClick = pImageDOM.find((p) => p.innerText === media.alt);
+
+  if(!pOfimageClick) {
+    pOfimageClick = pImageDOM.find((p) => p.innerText === media.firstChild.getAttribute("alt"));
+  }
   for (let i = 0; i < imagesDOM.length; i++) {
     const image = imagesDOM[i];
+    const p = pImageDOM[i];
     image.classList.add("displayNone");
+    p.classList.add("displayNone");
     imageClick.classList.remove("displayNone");
+    pOfimageClick.classList.remove("displayNone");
   }
 }
 
@@ -107,27 +124,31 @@ function displayHiddenPicture(media) {
  */
 function switchPicture() {
   const imagesDOM = Array.from(document.querySelectorAll(".imageLightBox"));
+  const pImageDOM = Array.from(document.querySelectorAll(".imageName"));
   const chevronRight = document.querySelector(".fa-chevron-right");
   const chevronLeft = document.querySelector(".fa-chevron-left");
 
   //go to next picture
   function nextPicture() {
-    console.log(displayImage);
+    pImageDOM[displayImage].classList.add("displayNone");
     imagesDOM[displayImage].classList.add("displayNone");
     displayImage++;
     if (imagesDOM.length <= displayImage) {
       displayImage = 0;
     }
     imagesDOM[displayImage].classList.remove("displayNone");
+    pImageDOM[displayImage].classList.remove("displayNone");
   }
   //go to previous picture
   function prevPicture() {
+    pImageDOM[displayImage].classList.add("displayNone");
     imagesDOM[displayImage].classList.add("displayNone");
     displayImage--;
     if (displayImage < 0) {
       displayImage = imagesDOM.length - 1;
     }
     imagesDOM[displayImage].classList.remove("displayNone");
+    pImageDOM[displayImage].classList.remove("displayNone");
   }
 
   chevronRight.addEventListener("click", () => nextPicture());
