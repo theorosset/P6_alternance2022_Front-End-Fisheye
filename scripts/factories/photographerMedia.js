@@ -24,6 +24,7 @@ export function mediaFactory(data) {
       } else {
         source.setAttribute("src", video);
         source.setAttribute("type", "video/mp4");
+        videoDom.setAttribute("tabindex", "0");
         source.setAttribute("alt", `${title}`);
         videoDom.classList.add("photographer-media");
       }

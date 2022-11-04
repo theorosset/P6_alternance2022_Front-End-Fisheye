@@ -8,46 +8,53 @@ import { openDiapoOnClick } from "./diaporama.js";
  * @param { function } likes 
  */
 export function setOrderBy(media, likes) {
-  const filterBtn = document.querySelector("#filter");
   const allLi = document.querySelectorAll("li");
-
   allLi.forEach((li) => {
     //add event listener for all Li
-    li.addEventListener("click", (e) => {
-      //condition if click on data or popularity or title
-      switch (e.target.innerText) {
-        case "Date":
-          e.target.innerText = filterBtn.innerText;
-          filterBtn.innerHTML = "Date <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
-          filterBtn.setAttribute("aria-label", "trier par date");
-          e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
-          const mediaDateSort = dateSort(media);
-          openDiapoOnClick(mediaDateSort, media);
-          likes();
-          break;
-        case "Populaire":
-          e.target.innerText = filterBtn.innerText;
-          filterBtn.innerHTML = "Populaire <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
-          filterBtn.setAttribute("aria-label", "trier par popularité");
-          e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
-          const mediaPopSort = popularitySort(media);
-          openDiapoOnClick(mediaPopSort, media);
-          likes();
-          break;
-        case "Titre":
-          e.target.innerText = filterBtn.innerText;
-          filterBtn.innerHTML = "Titre <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
-          filterBtn.setAttribute("aria-label", "trier par Titre");
-          e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
-          const mediaTitleSort = titleSort(media);
-          openDiapoOnClick(mediaTitleSort, media);
-          likes();
-          break;
+    li.addEventListener("click", (e) => setOnClick(e, media, likes));
+
+    li.addEventListener("keydown", (e) => { 
+      if (e.key === "Enter") { 
+        setOnClick(e, media, likes); 
       }
     });
   });
 }
 
+//condition if click on data or popularity or title
+function setOnClick (e, media, likes) {
+  const filterBtn = document.querySelector("#filter");
+
+  switch (e.target.innerText) {
+    case "Date":
+      e.target.innerText = filterBtn.innerText;
+      filterBtn.innerHTML = "Date <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
+      filterBtn.setAttribute("aria-label", "trier par date");
+      e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
+      const mediaDateSort = dateSort(media);
+      openDiapoOnClick(mediaDateSort, media);
+      likes();
+      break;
+    case "Populaire":
+      e.target.innerText = filterBtn.innerText;
+      filterBtn.innerHTML = "Populaire <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
+      filterBtn.setAttribute("aria-label", "trier par popularité");
+      e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
+      const mediaPopSort = popularitySort(media);
+      openDiapoOnClick(mediaPopSort, media);
+      likes();
+      break;
+    case "Titre":
+      e.target.innerText = filterBtn.innerText;
+      filterBtn.innerHTML = "Titre <i class=\"fas fa-chevron-down\" aria-hidden=\"true\"></i>";
+      filterBtn.setAttribute("aria-label", "trier par Titre");
+      e.target.setAttribute("aria-label", `trier par ${e.target.innerText}`);
+      const mediaTitleSort = titleSort(media);
+      openDiapoOnClick(mediaTitleSort, media);
+      likes();
+      break;
+  }
+}
 //sort by popularity
 function popularitySort(media) {
   const mediaSection = document.querySelector(".photograph-section-media");

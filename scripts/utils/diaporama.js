@@ -46,7 +46,7 @@ function openLightBox(allMediaDOM, allFetchMedia) {
 
     media.addEventListener("keydown", (e) => { 
       if (e.key === "Enter") { 
-        toggleLightBox(media);
+        toggleLightBox(e.target);
       }
     });
   });
