@@ -2,11 +2,7 @@
 import { mediaFactory } from "../factories/photographerMedia.js";
 import { openDiapoOnClick } from "./diaporama.js";
 
-/**
- * 
- * @param { Object[] } media 
- * @param { function } likes 
- */
+//function for event listener 
 export function setOrderBy(media, likes) {
   const allLi = document.querySelectorAll("li");
   allLi.forEach((li) => {
@@ -21,10 +17,15 @@ export function setOrderBy(media, likes) {
   });
 }
 
-//condition if click on data or popularity or title
+/**
+ * @param { Event } e 
+ * @param { Object[] } media 
+ * @param { function } likes 
+ */
 function setOnClick (e, media, likes) {
   const filterBtn = document.querySelector("#filter");
 
+  //condition if click on data or popularity or title
   switch (e.target.innerText) {
     case "Date":
       e.target.innerText = filterBtn.innerText;
