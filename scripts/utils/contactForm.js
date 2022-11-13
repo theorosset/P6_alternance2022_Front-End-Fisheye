@@ -12,6 +12,13 @@ function closeModal() {
   modal.style.display = "none";
 }
 
+document.querySelector(".closeForm")
+  .addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { 
+      closeModal();
+    }
+});
+
 // eslint-disable-next-line no-unused-vars
 function submitContainForm() {
   const form = document.querySelector("form");

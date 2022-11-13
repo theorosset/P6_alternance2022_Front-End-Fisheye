@@ -58,6 +58,7 @@
           <header>
             <h2>Contactez-moi</h2>
             <img
+              class="closeForm"
               tabindex="1"
               src="assets/icons/close.svg"
               alt="fermer la modale"
@@ -65,24 +66,24 @@
             />
           </header>
           <form>
-            <div class="firstName" tabindex="0">
+            <div class="firstName" tabindex="1">
               <label for="firstName">Prénom</label>
-              <input type="text" id="firstName" name="firstName" />
+              <input type="text" id="firstName" name="firstName" tabindex="1"/>
               <span id="errorFirstName"></span>
             </div>
-            <div>
+            <div tabindex="1">
               <label for="lastName">Nom</label>
-              <input type="text" id="lastName" name="lastName" />
+              <input type="text" id="lastName" name="lastName" tabindex="1"/>
               <span id="errorLastName"></span>
             </div>
-            <div>
+            <div tabindex="1">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" />
+              <input type="email" id="email" name="email" tabindex="1"/>
               <span id="errorEmail"></span>
             </div>
-            <div>
+            <div tabindex="1">
               <label for="message">Message</label>
-              <input type="text" id="message" name="message" />
+              <input type="text" id="message" name="message" tabindex="1" />
               <span id="errorMessage"></span>
             </div>
             <button
@@ -90,6 +91,7 @@
               onclick="submitContainForm()"
               class="contact_button"
               aria-label="soumettre"
+              tabindex="1"
             >
               Envoyer
             </button>
