@@ -22,7 +22,6 @@ document.querySelector(".closeForm")
 // eslint-disable-next-line no-unused-vars
 function submitContainForm() {
   const form = document.querySelector("form");
-  const formData = new FormData(form);
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -38,7 +37,14 @@ function submitContainForm() {
       messageValid(form.message) === true &&
       emailValid(form.email) === true
     ) {
-      console.log(Object.fromEntries(formData.entries()));
+      console.log(
+        {
+        email: form.email.value,
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        Message: form.message.value,
+        }
+      );
     } else {
       alert("Certain champs sont mal remplis");
     }
@@ -98,3 +104,4 @@ function messageValid(inputMessage) {
   }
   return (document.querySelector("#errorMessage").innerText = ""), true;
 }
+submitContainForm();
