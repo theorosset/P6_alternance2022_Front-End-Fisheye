@@ -65,7 +65,8 @@ function popularitySort(media) {
   media.sort(sort);
   mediaSection.innerHTML = "";
   createMediaInDom(media);
-  return Array.from(mediaSection.children);
+  const allMediaSort = document.querySelectorAll(".photographer-media");
+  return Array.from(allMediaSort);
 }
 
 // sort by title
@@ -81,7 +82,8 @@ function titleSort(media) {
   media.sort(sort);
   mediaSection.innerHTML = "";
   createMediaInDom(media);
-  return Array.from(mediaSection.children);
+  const allMediaSort = document.querySelectorAll(".photographer-media");
+  return Array.from(allMediaSort);
 }
 
 export function createMediaInDom(allMedia) {
@@ -102,5 +104,6 @@ function dateSort(media) {
   media.sort(sort);
   mediaSection.innerHTML = "";
   createMediaInDom(media);
-  return Array.from(mediaSection.children);
+  const allMediaSort = document.querySelectorAll(".photographer-media");
+  return Array.from(allMediaSort);
 }
