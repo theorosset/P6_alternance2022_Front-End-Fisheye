@@ -117,7 +117,16 @@ function displayHiddenPicture(media) {
     pOfimageClick.classList.remove("displayNone");
   }
 }
-
+//add display none
+function addDisplayNone(pDisplayNone, imageDisplayNone) {
+  pDisplayNone.classList.add("displayNone");
+  imageDisplayNone.classList.add("displayNone");
+}
+//remove display none 
+function removeDisplayNone(pDisplayNone, imageDisplayNone) {
+  pDisplayNone.classList.remove("displayNone");
+  imageDisplayNone.classList.remove("displayNone");
+}
 /**
  *
  *  this function control prev and next picture click and arrow
@@ -130,25 +139,21 @@ function switchPicture() {
 
   //go to next picture
   function nextPicture() {
-    pImageDOM[displayImage].classList.add("displayNone");
-    imagesDOM[displayImage].classList.add("displayNone");
+    addDisplayNone(pImageDOM[displayImage],imagesDOM[displayImage]);
     displayImage++;
     if (imagesDOM.length <= displayImage) {
       displayImage = 0;
     }
-    imagesDOM[displayImage].classList.remove("displayNone");
-    pImageDOM[displayImage].classList.remove("displayNone");
+    removeDisplayNone(pImageDOM[displayImage],imagesDOM[displayImage]);
   }
   //go to previous picture
   function prevPicture() {
-    pImageDOM[displayImage].classList.add("displayNone");
-    imagesDOM[displayImage].classList.add("displayNone");
+    addDisplayNone(pImageDOM[displayImage],imagesDOM[displayImage]);
     displayImage--;
     if (displayImage < 0) {
       displayImage = imagesDOM.length - 1;
     }
-    imagesDOM[displayImage].classList.remove("displayNone");
-    pImageDOM[displayImage].classList.remove("displayNone");
+    removeDisplayNone(pImageDOM[displayImage],imagesDOM[displayImage]);
   }
 
   chevronRight.addEventListener("click", () => nextPicture());
