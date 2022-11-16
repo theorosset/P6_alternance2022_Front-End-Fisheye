@@ -1,4 +1,4 @@
-let displayImage;
+let displayImageIndex;
 
 export function openDiapoOnClick(allMediaDOM, allMediaPhotographer) {
   const blocLightBox = document.querySelector(".bloc-lightBox");
@@ -36,7 +36,7 @@ export function toggleLightBox(media) {
   const blocLightBox = document.querySelector(".bloc-lightBox");
   blocLightBox.classList.toggle("displayNone");
   
-  displayImage = imagesDOM.findIndex((item) => item.getAttribute("alt") === media.getAttribute("alt"));
+  displayImageIndex = imagesDOM.findIndex((item) => item.getAttribute("alt") === media.getAttribute("alt"));
   displayHiddenPicture(media);
 }
 
@@ -139,24 +139,26 @@ function switchPicture() {
 
   //go to next picture
   function nextPicture() {
-    addDisplayNone(pImageDOM[displayImage],imagesDOM[displayImage]);
-    displayImage++;
-    if (imagesDOM.length <= displayImage) {
-      displayImage = 0;
+    addDisplayNone(pImageDOM[displayImageIndex],imagesDOM[displayImageIndex]);
+    displayImageIndex++;
+    if (imagesDOM.length <= displayImageIndex) {
+      displayImageIndex = 0;
     }
-    removeDisplayNone(pImageDOM[displayImage],imagesDOM[displayImage]);
+    console.log(displayImageIndex);
+    removeDisplayNone(pImageDOM[displayImageIndex],imagesDOM[displayImageIndex]);
   }
   //go to previous picture
   function prevPicture() {
-    addDisplayNone(pImageDOM[displayImage],imagesDOM[displayImage]);
-    displayImage--;
-    if (displayImage < 0) {
-      displayImage = imagesDOM.length - 1;
+    addDisplayNone(pImageDOM[displayImageIndex],imagesDOM[displayImageIndex]);
+    displayImageIndex--;
+    if (displayImageIndex < 0) {
+      displayImageIndex = imagesDOM.length - 1;
     }
-    removeDisplayNone(pImageDOM[displayImage],imagesDOM[displayImage]);
+    removeDisplayNone(pImageDOM[displayImageIndex],imagesDOM[displayImageIndex]);
   }
 
-  chevronRight.addEventListener("click", () => nextPicture());
+  const nextPictureEvent = chevronRight.addEventListener("click", nextPicture);
+  chevronRight.removeEventListener("click", nextPictureEvent);
   chevronRight.addEventListener("keydown", (e) => {
     if(e.key === "Enter") {
       nextPicture();
