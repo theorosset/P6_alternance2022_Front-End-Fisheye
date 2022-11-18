@@ -157,8 +157,7 @@ function switchPicture() {
     removeDisplayNone(pImageDOM[displayImageIndex],imagesDOM[displayImageIndex]);
   }
 
-  const nextPictureEvent = chevronRight.addEventListener("click", nextPicture);
-  chevronRight.removeEventListener("click", nextPictureEvent);
+  chevronRight.addEventListener("click", nextPicture);
   chevronRight.addEventListener("keydown", (e) => {
     if(e.key === "Enter") {
       nextPicture();
