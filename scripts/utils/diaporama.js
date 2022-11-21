@@ -147,7 +147,6 @@ function switchPicture() {
     if (imagesDOM.length <= displayImageIndex) {
       displayImageIndex = 0;
     }
-    console.log(displayImageIndex);
     removeDisplayNone(pImageDOM[displayImageIndex],imagesDOM[displayImageIndex]);
   }
   //go to previous picture
