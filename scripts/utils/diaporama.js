@@ -63,6 +63,7 @@ function displayPictures(allFetchMedia) {
   const div = document.querySelector(".lightBox");
 
   const chevronRight = document.querySelector(".fa-chevron-right");
+  const chevronLeft = document.querySelector(".fa-chevron-left");
 
   for (let i = 0; i < allFetchMedia.length; i++) {
     const media = allFetchMedia[i];
@@ -94,6 +95,8 @@ function displayPictures(allFetchMedia) {
       videoDom.appendChild(source);
     }
   }
+  chevronRight.replaceWith(chevronRight.cloneNode(true));
+  chevronLeft.replaceWith(chevronLeft.cloneNode(true));
   switchPicture();
 }
 
