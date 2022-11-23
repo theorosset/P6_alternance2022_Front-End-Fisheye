@@ -1,8 +1,9 @@
+const elementEvents = [];
 let displayImageIndex;
 
-export function openDiapoOnClick(allMediaDOM, allMediaPhotographer) {
+export function openDiapoOnClick(allMediaDOM, allMediaFetch) {
   const blocLightBox = document.querySelector(".bloc-lightBox");
-  openLightBox(allMediaDOM, allMediaPhotographer);
+  openLightBox(allMediaDOM, allMediaFetch);
   closeLightBox(blocLightBox);
 }
 /**
@@ -61,9 +62,7 @@ function openLightBox(allMediaDOM, allFetchMedia) {
  */
 function displayPictures(allFetchMedia) {
   const div = document.querySelector(".lightBox");
-
   const chevronRight = document.querySelector(".fa-chevron-right");
-  const chevronLeft = document.querySelector(".fa-chevron-left");
 
   for (let i = 0; i < allFetchMedia.length; i++) {
     const media = allFetchMedia[i];
@@ -95,8 +94,6 @@ function displayPictures(allFetchMedia) {
       videoDom.appendChild(source);
     }
   }
-  chevronRight.replaceWith(chevronRight.cloneNode(true));
-  chevronLeft.replaceWith(chevronLeft.cloneNode(true));
   switchPicture();
 }
 
@@ -159,25 +156,40 @@ function switchPicture() {
     removeDisplayNone(pImageDOM[displayImageIndex],imagesDOM[displayImageIndex]);
   }
 
-  chevronRight.addEventListener("click", nextPicture);
-  chevronRight.addEventListener("keydown", (e) => {
-    if(e.key === "Enter") {
-      nextPicture();
-    }
-  });
+  /**
+   * add event listener for switch picture
+   */
+  if(!elementEvents["chevronRightClick"] || !elementEvents["chevronRightKeyDown"]) {
+    chevronRight.addEventListener("click", nextPicture);
 
-  chevronLeft.addEventListener("click", () => prevPicture());
-  chevronLeft.addEventListener("keydown", (e) => {
-    if(e.key === "Enter") {
-      prevPicture();
-    }
-  });
+    chevronRight.addEventListener("keydown", (e) => {
+      if(e.key === "Enter") {
+        nextPicture();
+      }
+    });
+    elementEvents["chevronRightClick"] = true;
+    elementEvents["chevronRightKeyDown"] = true;
+  }
+  
+  if(!elementEvents["chevronLeftClick"] || !elementEvents["chevronLeftKeyDown"]) {
+     chevronLeft.addEventListener("click", prevPicture);
+    chevronLeft.addEventListener("keydown", (e) => {
+      if(e.key === "Enter") {
+        prevPicture();
+      }
+    });
+    elementEvents["chevronLeftKeyDown"] = true;
+    elementEvents["chevronLeftClick"] = true;
+  }
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") {
-      nextPicture();
-    } else if (e.key === "ArrowLeft") {
-      prevPicture();
-    }
-  });
+  if(!elementEvents["documentKeydown"]) {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") {
+        nextPicture();
+      } else if (e.key === "ArrowLeft") {
+        prevPicture();
+      }
+    });
+    elementEvents["documentKeydown"] = true;
+  }
 }
